@@ -1,0 +1,114 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nurlan Baitleuov — Developer &amp; Designer</title>
+<meta name="description" content="Nurlan Baitleuov — full-stack web, Android and game developer and UI/UX designer based in Astana, Kazakhstan.">
+<style>
+  :root { --bg: #0f172a; --card: #1e293b; --line: #334155; --text: #e2e8f0; --muted: #94a3b8; --accent: #60a5fa; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: "Segoe UI", system-ui, Arial, sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  nav { position: sticky; top: 0; background: #0f172ae6; backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 1; }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  nav .links a { color: var(--muted); margin-left: 18px; font-size: 15px; }
+  nav .links a:hover { color: var(--text); }
+  .logo { font-weight: 700; color: var(--text); }
+  header.wrap { padding: 96px 16px 72px; }
+  header .hi { color: var(--accent); font-weight: 600; }
+  h1 { font-size: clamp(36px, 7vw, 60px); line-height: 1.1; margin: 8px 0 16px; }
+  header p { color: var(--muted); max-width: 620px; font-size: 18px; }
+  .btns { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { padding: 10px 20px; border-radius: 8px; font-weight: 600; border: 1px solid var(--accent); }
+  .btn.primary { background: var(--accent); color: #0f172a; }
+  .btn:hover { text-decoration: none; opacity: .9; }
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 28px; margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .card h3 { font-size: 18px; margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: 15px; }
+  .tags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span { background: #0f172a; border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; font-size: 13px; color: var(--muted); }
+  .card .more { display: inline-block; margin-top: 14px; font-weight: 600; margin-right: 14px; }
+  footer { padding: 32px 0; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); text-align: center; }
+  @media (max-width: 560px) { nav .links a:not(:last-child) { display: none; } header.wrap { padding: 64px 16px 48px; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">NB</a>
+    <div class="links"><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="hi">Hi, I'm</div>
+  <h1>Nurlan Baitleuov</h1>
+  <p>Full-stack web, Android and game developer and UI/UX designer from Astana, Kazakhstan. I design and build products end to end — from Figma mock-ups to fast websites, mobile apps and games.</p>
+  <div class="btns">
+    <a class="btn primary" href="#projects">See my work</a>
+    <a class="btn" href="mailto:kukukunununu123@gmail.com">Contact me</a>
+  </div>
+</header>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card"><h3>🌐 Web</h3><p>Responsive, fast websites and web apps.</p>
+        <div class="tags"><span>HTML/CSS</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Node.js</span></div></div>
+      <div class="card"><h3>📱 Android</h3><p>Native mobile apps with modern tooling.</p>
+        <div class="tags"><span>Kotlin</span><span>Java</span><span>Jetpack Compose</span><span>Firebase</span></div></div>
+      <div class="card"><h3>🎮 Games</h3><p>2D/3D games, gameplay systems and worlds.</p>
+        <div class="tags"><span>Unity</span><span>C#</span><span>Roblox Studio</span><span>Luau</span><span>Blender</span></div></div>
+      <div class="card"><h3>🎨 Design</h3><p>UI/UX, prototypes and visual identity.</p>
+        <div class="tags"><span>Figma</span><span>Photoshop</span><span>Illustrator</span><span>Prototyping</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Brick Breaker</h3>
+        <p>Arcade game in pure JavaScript and HTML5 Canvas: endless levels, paddle-angle physics, particles and saved best score. Plays on desktop and mobile.</p>
+        <div class="tags"><span>JavaScript</span><span>Canvas</span><span>Game dev</span></div>
+        <a class="more" href="https://kukununu.github.io/brick-breaker/">▶ Play</a><a class="more" href="https://github.com/kukununu/brick-breaker">Code</a>
+      </div>
+      <div class="card">
+        <h3>Astana City — Roblox</h3>
+        <p>Open-world recreation of Astana landmarks in Roblox Studio with custom buildings and Luau-scripted interactions.</p>
+        <div class="tags"><span>Roblox Studio</span><span>Luau</span><span>3D</span></div>
+      </div>
+      <div class="card">
+        <h3>This Portfolio</h3>
+        <p>Responsive single-page site with no frameworks — semantic HTML and modern CSS, hosted on GitHub Pages.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
+        <a class="more" href="https://github.com/kukununu/kukununu.github.io">Code</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p style="color:var(--muted);margin-bottom:16px">Open to full-time roles and freelance projects.</p>
+    <p>✉ <a href="mailto:kukukunununu123@gmail.com">kukukunununu123@gmail.com</a></p>
+    <p>🔗 <a href="https://github.com/kukununu">github.com/kukununu</a></p>
+    <p>⌂ Astana, Kazakhstan</p>
+  </div>
+</section>
+
+<footer>© 2026 Nurlan Baitleuov</footer>
+</body>
+</html>
+
