@@ -1,132 +1,324 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nurlan Baitleuov — Developer &amp; Designer</title>
-<meta name="description" content="Nurlan Baitleuov — full-stack web, Android and game developer and UI/UX designer based in Astana, Kazakhstan.">
+<title>Нурлан Байтлеуов: Telegram-боты, ИИ-ассистенты и сайты</title>
+<meta name="description" content="Делаю Telegram-ботов, ИИ-ассистентов на Claude и GPT, Mini Apps, лендинги и рекламу в Meta. Астана и удалённо.">
+<meta property="og:title" content="Нурлан Байтлеуов: боты, сайты и реклама для бизнеса">
+<meta property="og:description" content="Telegram-боты, ИИ-ассистенты, Mini Apps, лендинги, таргет. Астана и удалённо. Напишите, обсудим за 10 минут.">
+<meta property="og:image" content="https://kukununu.github.io/og.png">
+<meta property="og:url" content="https://kukununu.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #0f172a; --card: #1e293b; --line: #334155; --text: #e2e8f0; --muted: #94a3b8; --accent: #60a5fa; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: "Segoe UI", system-ui, Arial, sans-serif; line-height: 1.6; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
-  nav { position: sticky; top: 0; background: #0f172ae6; backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 1; }
-  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
-  nav .links a { color: var(--muted); margin-left: 18px; font-size: 15px; }
-  nav .links a:hover { color: var(--text); }
-  .logo { font-weight: 700; color: var(--text); }
-  header.wrap { padding: 96px 16px 72px; }
-  header .hi { color: var(--accent); font-weight: 600; }
-  h1 { font-size: clamp(36px, 7vw, 60px); line-height: 1.1; margin: 8px 0 16px; }
-  header p { color: var(--muted); max-width: 620px; font-size: 18px; }
-  .btns { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn { padding: 10px 20px; border-radius: 8px; font-weight: 600; border: 1px solid var(--accent); }
-  .btn.primary { background: var(--accent); color: #0f172a; }
-  .btn:hover { text-decoration: none; opacity: .9; }
-  section { padding: 56px 0; border-top: 1px solid var(--line); }
-  h2 { font-size: 28px; margin-bottom: 24px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
-  .card h3 { font-size: 18px; margin-bottom: 6px; }
-  .card p { color: var(--muted); font-size: 15px; }
-  .tags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
-  .tags span { background: #0f172a; border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; font-size: 13px; color: var(--muted); }
-  .card .more { display: inline-block; margin-top: 14px; font-weight: 600; margin-right: 14px; }
-  footer { padding: 32px 0; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); text-align: center; }
-  @media (max-width: 560px) { nav .links a:not(:last-child) { display: none; } header.wrap { padding: 64px 16px 48px; } }
+:root{
+  --paper:#F1F5F8; --card:#FFFFFF; --ink:#13212F; --muted:#56687A; --line:#CCD8E1;
+  --sky:#0A8BBE; --sky-deep:#066F99; --gold:#E0A30A; --bubble:#DCEFF8;
+  --display:"Unbounded",system-ui,sans-serif; --text:"Golos Text",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+.lead{color:var(--muted);max-width:60ch}
+section{padding:96px 0}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font:700 18px var(--display);text-decoration:none}
+nav ul{display:flex;gap:28px;list-style:none}
+nav ul a{text-decoration:none;color:var(--muted);font-weight:500}
+nav ul a:hover{color:var(--ink)}
+
+/* buttons */
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink);transition:background .15s,color .15s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.primary{background:var(--sky);border-color:var(--sky);color:#fff}
+.btn.primary:hover{background:var(--sky-deep);border-color:var(--sky-deep)}
+.btn:not(.primary):hover{background:var(--ink);color:#fff}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:56px 0 96px}
+.hero h1{font-size:clamp(32px,4.4vw,52px);margin-bottom:24px}
+.hero .lead{font-size:19px;margin-bottom:32px}
+.avail{display:flex;align-items:center;gap:10px;margin-top:28px;color:var(--muted);font-size:15px}
+.avail i{width:10px;height:10px;border-radius:50%;background:#2DB36F;box-shadow:0 0 0 4px #2db36f2e}
+
+/* chat — the one memorable thing */
+.chat{background:var(--card);border-radius:28px;padding:20px 18px 24px;border:1px solid var(--line);box-shadow:0 30px 60px -30px #13212f40}
+.chat-head{display:flex;align-items:center;gap:12px;padding:0 4px 16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.ava{width:42px;height:42px;border-radius:50%;background:var(--sky);color:#fff;display:grid;place-items:center;font:700 16px var(--display)}
+.chat-head b{display:block;font-weight:600}
+.chat-head small{color:#2DB36F;font-size:13px}
+.msg{max-width:84%;padding:10px 14px 8px;border-radius:18px;margin:8px 0;font-size:15.5px;line-height:1.45;opacity:0;transform:translateY(8px);animation:pop .35s ease-out forwards}
+.msg time{display:block;text-align:right;font-size:11px;color:var(--muted);margin-top:2px}
+.them{background:var(--paper);border-bottom-left-radius:6px}
+.me{background:var(--bubble);margin-left:auto;border-bottom-right-radius:6px}
+.m1{animation-delay:.4s}.m2{animation-delay:1.6s}.m3{animation-delay:2.6s}.m4{animation-delay:3.8s}
+.typing{display:inline-flex;gap:4px;padding:12px 14px;background:var(--bubble);border-radius:18px;margin:8px 0 0 auto;width:max-content;float:right;opacity:0;animation:blink 1s 1s 1 both}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--muted)}
+.chat-note{clear:both;font-size:13px;color:var(--muted);margin-top:14px;text-align:center}
+@keyframes pop{to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:0}10%,90%{opacity:1}}
+
+/* price list */
+.prices{margin-top:40px;border-top:2px solid var(--ink)}
+.row{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.row h3{font:600 20px var(--text);display:flex;align-items:baseline;gap:12px}
+.row h3::after{content:"";flex:1;border-bottom:2px dotted var(--line);transform:translateY(-5px)}
+.row .price{font:700 18px var(--display);color:var(--ink);white-space:nowrap;align-self:baseline}
+.row .price em{font-style:normal;color:var(--gold)}
+.row p{grid-column:1/-1;color:var(--muted);max-width:68ch;font-size:16px}
+
+/* cases */
+#work{background:var(--ink);color:#E9F0F5}
+#work .lead{color:#A9BCCB}
+.feature{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;margin:48px 0 24px;padding:40px;border-radius:28px;background:#1B2D3F}
+.feature h3{font-size:clamp(24px,3vw,32px);margin-bottom:14px;color:#fff}
+.feature p{color:#C3D2DD;margin-bottom:14px}
+.flow{list-style:none;display:grid;gap:10px;align-content:center}
+.flow li{background:#24384C;border-radius:14px;padding:12px 16px;font-size:15px;color:#E9F0F5}
+.flow b{color:var(--gold);font-weight:600}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.stack span{border:1px solid #3A5068;border-radius:999px;padding:3px 12px;font-size:14px;color:#C3D2DD}
+.cases{list-style:none}
+.case{display:grid;grid-template-columns:220px 1fr auto;gap:24px;align-items:start;padding:28px 0;border-top:1px solid #2C4157}
+.case .kind{color:#8FA7BA;font-size:15px;padding-top:4px}
+.case h3{font:600 21px var(--text);color:#fff;margin-bottom:6px}
+.case p{color:#B9CAD6;max-width:62ch;font-size:16px}
+.case .links{display:flex;flex-direction:column;gap:6px;text-align:right;white-space:nowrap}
+.case .links a{color:#7FD0F0;font-weight:500;text-underline-offset:3px}
+.nda{display:inline-block;margin-left:8px;font-size:13px;color:var(--gold);border:1px solid #E0A30A66;border-radius:6px;padding:0 6px;vertical-align:middle}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:40px;counter-reset:s}
+.step{counter-increment:s;border-top:2px solid var(--ink);padding-top:18px}
+.step::before{content:counter(s);font:700 44px var(--display);color:var(--sky);display:block;margin-bottom:10px;line-height:1}
+.step h3{font:600 19px var(--text);margin-bottom:6px}
+.step p{color:var(--muted);font-size:16px}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.about p+p{margin-top:14px}
+.skills dt{font-weight:600;margin-top:18px}
+.skills dt:first-child{margin-top:0}
+.skills dd{color:var(--muted)}
+
+/* contact */
+#contact{padding-bottom:64px}
+.cta{background:var(--sky);color:#fff;border-radius:32px;padding:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.cta h2{color:#fff}
+.cta p{color:#E2F4FB}
+.cta .btn{border-color:#fff;color:#fff}
+.cta .btn.primary{background:#fff;color:var(--sky-deep)}
+.cta .btn.primary:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.cta .btn:not(.primary):hover{background:#fff;color:var(--sky-deep)}
+.contacts{list-style:none;display:grid;gap:10px;font-size:16px}
+.contacts a{text-underline-offset:3px}
+footer{padding:28px 0 40px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:900px){
+  .hero,.feature,.about,.cta{grid-template-columns:1fr}
+  .hero{padding-top:24px;gap:40px}
+  .steps{grid-template-columns:1fr 1fr}
+  .case{grid-template-columns:1fr}
+  .case .links{flex-direction:row;text-align:left;gap:18px}
+  nav ul{display:none}
+  section{padding:72px 0}
+  .feature,.cta{padding:28px}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .steps{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .row h3::after{display:none}
+  .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .msg{animation:none;opacity:1;transform:none}
+  .typing{display:none}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
-<nav>
-  <div class="wrap">
-    <a class="logo" href="#">NB</a>
-    <div class="links"><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
-  </div>
-</nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 13 1.5 11.5c-1-.3-1.1-1 .2-1.5L20.6 2.8c.9-.3 1.6.2 1.3 1.5z"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></symbol>
+</svg>
 
-<header class="wrap">
-  <div class="hi">Hi, I'm</div>
-  <h1>Nurlan Baitleuov</h1>
-  <p>Full-stack web, Android and game developer and UI/UX designer from Astana, Kazakhstan. I design and build products end to end — from Figma mock-ups to fast websites, mobile apps and games.</p>
-  <div class="btns">
-    <a class="btn primary" href="#projects">See my work</a>
-    <a class="btn" href="mailto:kukukunununu123@gmail.com">Contact me</a>
-  </div>
-</header>
+<div class="wrap">
+  <nav aria-label="Основное меню">
+    <a class="logo" href="#">Нурлан Байтлеуов</a>
+    <ul>
+      <li><a href="#services">Услуги и цены</a></li>
+      <li><a href="#work">Работы</a></li>
+      <li><a href="#process">Как работаю</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+  </nav>
 
-<section id="skills">
+  <header class="hero">
+    <div>
+      <h1>Боты, ИИ-ассистенты и сайты, через которые приходят клиенты</h1>
+      <p class="lead">Я Нурлан, разработчик из Астаны. Пишу ботов на Python, ИИ-ассистентов на Claude и GPT, Mini Apps и лендинги на React, настраиваю рекламу в Instagram и Facebook. Работаю с бизнесом в Казахстане и удалённо.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://t.me/bynrln"><svg aria-hidden="true"><use href="#tg"/></svg>Написать в Telegram</a>
+        <a class="btn" href="https://wa.me/77478202170"><svg aria-hidden="true"><use href="#wa"/></svg>WhatsApp</a>
+      </div>
+      <p class="avail"><i aria-hidden="true"></i>Беру новые проекты. Созвон 10–15 минут в любой будний день.</p>
+    </div>
+
+    <div class="chat" role="img" aria-label="Пример переписки: клиент просит бота для записи в салон, Нурлан предлагает решение и созвон">
+      <div class="chat-head">
+        <div class="ava" aria-hidden="true">Н</div>
+        <div><b>Нурлан</b><small>в сети</small></div>
+      </div>
+      <p class="msg them m1">Здравствуйте! Нужен бот, чтобы клиенты сами записывались в салон<time>14:02</time></p>
+      <div class="typing" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="msg me m2">Добрый день! Сделаю: клиент выбирает мастера и время, за день бот напоминает о визите, все записи падают в Google Таблицу<time>14:04</time></p>
+      <p class="msg me m3">Могу показать похожего бота на созвоне, это 10 минут. Когда удобно?<time>14:04</time></p>
+      <p class="msg them m4">Давайте завтра в 15:00<time>14:06</time></p>
+      <p class="chat-note">Так обычно начинается проект</p>
+    </div>
+  </header>
+</div>
+
+<section id="services">
   <div class="wrap">
-    <h2>Skills</h2>
-    <div class="grid">
-      <div class="card"><h3>🌐 Web</h3><p>Responsive, fast websites and web apps.</p>
-        <div class="tags"><span>HTML/CSS</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Node.js</span></div></div>
-      <div class="card"><h3>📱 Android</h3><p>Native mobile apps with modern tooling.</p>
-        <div class="tags"><span>Kotlin</span><span>Java</span><span>Jetpack Compose</span><span>Firebase</span></div></div>
-      <div class="card"><h3>🎮 Games</h3><p>2D/3D games, gameplay systems and worlds.</p>
-        <div class="tags"><span>Unity</span><span>C#</span><span>Roblox Studio</span><span>Luau</span><span>Blender</span></div></div>
-      <div class="card"><h3>🎨 Design</h3><p>UI/UX, prototypes and visual identity.</p>
-        <div class="tags"><span>Figma</span><span>Photoshop</span><span>Illustrator</span><span>Prototyping</span></div></div>
+    <h2>Услуги и цены</h2>
+    <p class="lead">Цены стартовые. Точную сумму и срок называю после короткого созвона, когда понятна задача. Фиксирую их до начала работы.</p>
+    <div class="prices">
+      <div class="row"><h3>Telegram-бот</h3><span class="price">от <em>60 000 ₸</em></span>
+        <p>Заявки, запись, приём заказов, магазин в боте. Уведомления вам в Telegram, выгрузка в Google Таблицы.</p></div>
+      <div class="row"><h3>ИИ-ассистент на Claude или GPT</h3><span class="price">от <em>180 000 ₸</em></span>
+        <p>Отвечает клиентам по вашим ценам и услугам, записывает, передаёт вам сложные вопросы. Работает в Telegram, на сайте или в WhatsApp Business.</p></div>
+      <div class="row"><h3>Telegram Mini App</h3><span class="price">от <em>250 000 ₸</em></span>
+        <p>Полноценное приложение внутри Telegram: меню и бронь, каталог, запись, личный кабинет. Без установки из магазина.</p></div>
+      <div class="row"><h3>Лендинг или квиз</h3><span class="price">от <em>70 000 ₸</em></span>
+        <p>Лендинг под рекламу от 90 000 ₸, квиз от 70 000 ₸. Быстрая загрузка на телефоне, заявки сразу в Telegram.</p></div>
+      <div class="row"><h3>Реклама в Instagram и Facebook</h3><span class="price">от <em>25 000 ₸</em></span>
+        <p>Аудит кабинета 25 000 ₸, запуск 60 000 ₸, ведение 90 000 ₸ в месяц. Тексты и креативы на русском, казахском и английском.</p></div>
+      <div class="row"><h3>Автоматизация заявок</h3><span class="price">от <em>50 000 ₸</em></span>
+        <p>Заявки с сайта, Instagram и бота собираются в одну таблицу или CRM, а вам приходит уведомление.</p></div>
+      <div class="row"><h3>Фронтенд на React и TypeScript</h3><span class="price"><em>по задаче</em></span>
+        <p>Доработка интерфейсов, админки и SPA, вёрстка по макету, подключение к REST API. Почасово или фиксированно.</p></div>
+      <div class="row"><h3>Игры и механики в Roblox</h3><span class="price"><em>по задаче</em></span>
+        <p>Брендированные игры, мультиплеер, скрипты на Luau.</p></div>
     </div>
   </div>
 </section>
 
-<section id="projects">
+<section id="work">
   <div class="wrap">
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>FitGo — Fitness Social App</h3>
-        <p>Android fitness social network: workout feed, posts, challenges, trainers, chats, achievements and profiles. 15+ screens built with Clean Architecture and MVVM.</p>
-        <div class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>Hilt</span><span>Room</span></div>
-        <a class="more" href="https://github.com/kukununu/FitGoApp">Code &amp; APK</a>
+    <h2>Работы</h2>
+    <p class="lead">Проекты, которые можно посмотреть или потрогать. Где проект под NDA, клиента не называю.</p>
+
+    <article class="feature">
+      <div>
+        <h3>Job Hunter: ИИ-агенты, которые ищут заказы и пишут отклики</h3>
+        <p>Система из четырёх агентов. Каждые три часа она читает 16 Telegram-каналов с вакансиями, отсеивает старое, дубли и мошенников, оценивает условия и оплату через Claude и пишет отклик на языке объявления.</p>
+        <p>Всё приходит в Telegram-бот с кнопками «Отправить», «Изменить», «Пропустить», а управление вынесено в Telegram Mini App с защищённым входом.</p>
+        <div class="stack"><span>Python</span><span>Claude</span><span>Telegram Bot API</span><span>Mini App</span><span>SQLite</span><span>Cloudflare Tunnel</span></div>
       </div>
-      <div class="card">
-        <h3>Nino Kitchen &amp; Bar — Telegram Mini App</h3>
-        <p>Telegram Mini App for a restaurant in Astana: menu by category and table booking sent straight to the bot.</p>
-        <div class="tags"><span>JavaScript</span><span>Telegram Web Apps</span><span>HTML/CSS</span></div>
-        <a class="more" href="https://github.com/kukununu/nino-miniapp">Code</a>
-      </div>
-      <div class="card">
-        <h3>Skyline — Android Weather App</h3>
-        <p>Offline-first weather app: city search, saved cities, custom 24-hour Canvas chart, 7-day forecast and weather-aware animated themes. MVVM, unit + screenshot tests, CI.</p>
-        <div class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>Room</span><span>Retrofit</span></div>
-        <a class="more" href="https://github.com/kukununu/skyline/releases/latest">⬇ APK</a><a class="more" href="https://github.com/kukununu/skyline">Code</a>
-      </div>
-      <div class="card">
-        <h3>Brick Breaker</h3>
-        <p>Arcade game in pure JavaScript and HTML5 Canvas: endless levels, paddle-angle physics, particles and saved best score. Plays on desktop and mobile.</p>
-        <div class="tags"><span>JavaScript</span><span>Canvas</span><span>Game dev</span></div>
-        <a class="more" href="https://kukununu.github.io/brick-breaker/">▶ Play</a><a class="more" href="https://github.com/kukununu/brick-breaker">Code</a>
-      </div>
-      <div class="card">
-        <h3>Astana City — Roblox</h3>
-        <p>Open-world recreation of Astana landmarks in Roblox Studio with custom buildings and Luau-scripted interactions.</p>
-        <div class="tags"><span>Roblox Studio</span><span>Luau</span><span>3D</span></div>
-      </div>
-      <div class="card">
-        <h3>This Portfolio</h3>
-        <p>Responsive single-page site with no frameworks — semantic HTML and modern CSS, hosted on GitHub Pages.</p>
-        <div class="tags"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
-        <a class="more" href="https://github.com/kukununu/kukununu.github.io">Code</a>
-      </div>
+      <ol class="flow" aria-label="Как работает Job Hunter">
+        <li><b>Поиск.</b> Код читает публичные каналы и фильтрует по дате, городу и стоп-словам</li>
+        <li><b>Проверка.</b> Claude оценивает задачу и бюджет от 1 до 10</li>
+        <li><b>Отклик.</b> Claude пишет короткий живой текст, без шаблонов</li>
+        <li><b>Решение.</b> Карточка приходит в Telegram, отправка только после одобрения</li>
+      </ol>
+    </article>
+
+    <ul class="cases">
+      <li class="case"><span class="kind">ИИ-бот</span>
+        <div><h3>ИИ-администратор для ресторанов</h3><p>Telegram-бот на Claude: принимает брони и сам отвечает гостям на вопросы о меню, времени работы и доставке.</p></div>
+        <div class="links"></div></li>
+      <li class="case"><span class="kind">Telegram Mini App</span>
+        <div><h3>Nino Kitchen &amp; Bar</h3><p>Мини-приложение ресторана в Астане: меню по категориям с ценами в тенге и бронь столика, которая сразу приходит в бот.</p></div>
+        <div class="links"><a href="https://github.com/kukununu/nino-miniapp">Код на GitHub</a></div></li>
+      <li class="case"><span class="kind">Roblox</span>
+        <div><h3>Брендированная игра для девелопера<span class="nda">NDA</span></h3><p>Игра в Roblox для крупной строительной компании: мир, механики и мультиплеер на Luau. Сейчас в разработке.</p></div>
+        <div class="links"></div></li>
+      <li class="case"><span class="kind">Roblox</span>
+        <div><h3>Astana City</h3><p>Открытый мир с достопримечательностями Астаны: свои здания и интерактив на Luau.</p></div>
+        <div class="links"></div></li>
+      <li class="case"><span class="kind">Хакатон, финтех</span>
+        <div><h3>QaqpanX: антидроп-радар для банка</h3><p>Команда Legion, кейс «Выявление мошенничества». Прототип находит карты дропов по поведению в первые минуты и замораживает цепочку переводов. Своя модель на 10 000 синтетических счетов: 93% дропов на тесте при 0,8% ложных тревог.</p></div>
+        <div class="links"></div></li>
+      <li class="case"><span class="kind">Android</span>
+        <div><h3>FitGo</h3><p>Фитнес-соцсеть: лента тренировок, челленджи, тренеры, чаты и достижения. Более 15 экранов, Clean Architecture и MVVM.</p></div>
+        <div class="links"><a href="https://github.com/kukununu/FitGoApp">Код и APK</a></div></li>
+      <li class="case"><span class="kind">Android</span>
+        <div><h3>Skyline</h3><p>Погода офлайн: поиск городов, график на 24 часа, прогноз на неделю и анимированные темы под погоду. Тесты и CI.</p></div>
+        <div class="links"><a href="https://github.com/kukununu/skyline/releases/latest">Скачать APK</a><a href="https://github.com/kukununu/skyline">Код</a></div></li>
+      <li class="case"><span class="kind">Веб-игра</span>
+        <div><h3>Brick Breaker</h3><p>Аркада на чистом JavaScript и Canvas: бесконечные уровни, физика отскока, рекорд сохраняется. Играется и на телефоне.</p></div>
+        <div class="links"><a href="https://kukununu.github.io/brick-breaker/">Играть</a><a href="https://github.com/kukununu/brick-breaker">Код</a></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2>Как работаю</h2>
+    <div class="steps">
+      <div class="step"><h3>Созвон</h3><p>10–15 минут. Разбираемся, что должно получиться и как вы поймёте, что работает.</p></div>
+      <div class="step"><h3>Цена и срок</h3><p>Присылаю короткое ТЗ, фиксированную цену и дату сдачи. Начинаю после вашего «да».</p></div>
+      <div class="step"><h3>Показываю по ходу</h3><p>Каждые пару дней присылаю, что готово. Правки вносим сразу, а не в конце.</p></div>
+      <div class="step"><h3>Запуск</h3><p>Запускаю, объясняю, как пользоваться, и остаюсь на связи, если что-то понадобится поменять.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2>Обо мне</h2>
+      <p>Окончил SDU в 2022 году и с тех пор делаю сайты, приложения и игры на фрилансе. Сейчас в основном работаю с ботами и ИИ: это то, что быстрее всего экономит бизнесу время и деньги.</p>
+      <p>Преподавал программирование на Python детям, поэтому умею объяснять сложное простыми словами, и вам не придётся разбираться в технических деталях.</p>
+      <p>Говорю на казахском, русском, английском и турецком.</p>
+    </div>
+    <dl class="skills">
+      <dt>Боты и ИИ</dt><dd>Python, Telegram Bot API, Mini Apps, Claude и OpenAI API, ИИ-агенты</dd>
+      <dt>Веб</dt><dd>React, TypeScript, Next.js, Node.js, REST, Tailwind</dd>
+      <dt>Мобильные приложения</dt><dd>Kotlin, Jetpack Compose, Firebase</dd>
+      <dt>Игры</dt><dd>Roblox Studio и Luau, Unity и C#, Blender</dd>
+      <dt>Реклама и дизайн</dt><dd>Meta Ads, тексты на трёх языках, Figma</dd>
+    </dl>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
-    <h2>Contact</h2>
-    <p style="color:var(--muted);margin-bottom:16px">Open to full-time roles and freelance projects.</p>
-    <p>✉ <a href="mailto:kukukunununu123@gmail.com">kukukunununu123@gmail.com</a></p>
-    <p>🔗 <a href="https://github.com/kukununu">github.com/kukununu</a></p>
-    <p>⌂ Astana, Kazakhstan</p>
+    <div class="cta">
+      <div>
+        <h2>Расскажите о задаче</h2>
+        <p>Напишите пару строк о том, что нужно. Отвечу в тот же день и предложу время для созвона.</p>
+        <div class="btns" style="margin-top:28px">
+          <a class="btn primary" href="https://t.me/bynrln"><svg aria-hidden="true"><use href="#tg"/></svg>Написать в Telegram</a>
+          <a class="btn" href="https://wa.me/77478202170"><svg aria-hidden="true"><use href="#wa"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      <ul class="contacts">
+        <li>Telegram: <a href="https://t.me/bynrln">@bynrln</a></li>
+        <li>WhatsApp: <a href="https://wa.me/77478202170">+7 747 820 21 70</a></li>
+        <li>Почта: <a href="mailto:nbaitleuov@gmail.com">nbaitleuov@gmail.com</a></li>
+        <li>Instagram: <a href="https://instagram.com/bynrln">@bynrln</a></li>
+        <li>Код: <a href="https://github.com/kukununu">github.com/kukununu</a></li>
+        <li><a href="Nurlan_Baitleuov_CV.pdf">Резюме в PDF</a></li>
+      </ul>
+    </div>
+    <footer><span>Нурлан Байтлеуов, Астана</span><span>Сайт сделан без конструкторов и шаблонов</span></footer>
   </div>
 </section>
-
-<footer>© 2026 Nurlan Baitleuov</footer>
 </body>
 </html>
-
