@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Студия «Сая»: онлайн-запись</title>
+<meta name="description" content="Демо Telegram Mini App: запись в салон красоты за 4 шага.">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:var(--tg-theme-bg-color,#FBF7F4); --text:var(--tg-theme-text-color,#2A1E1B);
+  --hint:var(--tg-theme-hint-color,#8A7A74); --card:var(--tg-theme-secondary-bg-color,#FFFFFF);
+  --accent:#B4536A; --accent-soft:#F3E1E5; --line:#EADFDA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:500 16px/1.45 "Manrope",system-ui,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:12px}
+.app{max-width:480px;margin:0 auto;padding:20px 16px 120px}
+.demo{font-size:13px;color:var(--hint);text-align:center;margin-bottom:14px}
+.demo a{color:var(--accent)}
+header{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.logo{width:52px;height:52px;border-radius:16px;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 24px "Manrope"}
+header h1{font-size:21px;font-weight:800}
+header p{color:var(--hint);font-size:14px}
+.progress{display:flex;gap:6px;margin-bottom:22px}
+.progress i{flex:1;height:4px;border-radius:4px;background:var(--line);transition:background .3s}
+.progress i.on{background:var(--accent)}
+h2{font-size:19px;font-weight:800;margin-bottom:14px}
+.list{display:grid;gap:10px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;background:var(--card);border:2px solid transparent;border-radius:18px;padding:16px;transition:border-color .15s}
+.opt[aria-pressed=true]{border-color:var(--accent)}
+.opt small{display:block;color:var(--hint);font-size:13.5px;font-weight:500}
+.opt b{font-weight:700}
+.price{font-weight:800;white-space:nowrap}
+.master{display:flex;align-items:center;gap:14px}
+.face{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;flex:none}
+.stars{color:#D69A2D;font-size:13px}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:18px;scrollbar-width:none}
+.day{flex:none;width:62px;padding:10px 0;border-radius:16px;background:var(--card);text-align:center;border:2px solid transparent}
+.day small{display:block;color:var(--hint);font-size:12px}
+.day b{font-size:19px}
+.day[aria-pressed=true]{border-color:var(--accent);background:var(--accent-soft)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{padding:12px 0;border-radius:14px;background:var(--card);font-weight:700;border:2px solid transparent}
+.slot:disabled{color:var(--hint);text-decoration:line-through;opacity:.55;cursor:default}
+.slot[aria-pressed=true]{background:var(--accent);color:#fff}
+.summary{background:var(--card);border-radius:20px;padding:18px;display:grid;gap:12px;margin-bottom:16px}
+.summary div{display:flex;justify-content:space-between;gap:12px}
+.summary span{color:var(--hint)}
+label{display:block;font-size:14px;color:var(--hint);margin:12px 0 6px}
+input{width:100%;font:inherit;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--text)}
+input:focus{outline:none;border-color:var(--accent)}
+.done{text-align:center;padding-top:30px}
+.check{width:84px;height:84px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;margin:0 auto 18px}
+.check svg{width:42px;height:42px;stroke:var(--accent);stroke-dasharray:40;stroke-dashoffset:40;animation:draw .5s .15s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done p{color:var(--hint);margin:8px 0 22px}
+.notice{background:var(--card);border-radius:18px;padding:14px 16px;text-align:left;font-size:14.5px;border-left:4px solid var(--accent)}
+.notice b{display:block;margin-bottom:4px}
+.bar{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 30%)}
+.bar div{max-width:480px;margin:0 auto;display:flex;gap:10px}
+.next{flex:1;padding:16px;border-radius:16px;background:var(--accent);color:#fff;font-weight:800;font-size:16.5px}
+.next:disabled{opacity:.4;cursor:default}
+.back{padding:16px 18px;border-radius:16px;background:var(--card);font-weight:700}
+.screen{animation:in .25s ease-out}
+@keyframes in{from{opacity:0;transform:translateX(12px)}}
+@media (prefers-reduced-motion:reduce){.screen,.check svg{animation:none;stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<div class="app">
+  <p class="demo" id="demoNote">Демо Telegram Mini App · <a href="../../">портфолио Нурлана</a></p>
+  <header>
+    <div class="logo" aria-hidden="true">С</div>
+    <div><h1>Студия «Сая»</h1><p>Астана, ул. Кенесары 40 · 10:00–21:00</p></div>
+  </header>
+  <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <main id="screen" aria-live="polite"></main>
+</div>
+<div class="bar" id="bar"><div><button class="back" id="back" type="button">Назад</button><button class="next" id="next" type="button">Дальше</button></div></div>
+
+<script>
+const tg = window.Telegram && Telegram.WebApp && Telegram.WebApp.initData ? Telegram.WebApp : null;
+if (tg) { tg.ready(); tg.expand(); document.getElementById('demoNote').hidden = true; }
+
+const SERVICES = [
+  { id:'cut', name:'Женская стрижка', time:'60 мин', price:8000 },
+  { id:'color', name:'Окрашивание в один тон', time:'2 ч', price:18000 },
+  { id:'mani', name:'Маникюр с покрытием', time:'90 мин', price:7000 },
+  { id:'brows', name:'Брови: коррекция и окрашивание', time:'45 мин', price:5000 },
+];
+const MASTERS = [
+  { id:'a', name:'Айгерим', role:'топ-мастер, стаж 8 лет', rate:'4,9', color:'#B4536A', does:['cut','color'] },
+  { id:'d', name:'Дана', role:'стилист-колорист', rate:'4,8', color:'#7A5C9E', does:['cut','color','brows'] },
+  { id:'m', name:'Мадина', role:'мастер ногтевого сервиса', rate:'5,0', color:'#3F8A7A', does:['mani'] },
+  { id:'k', name:'Камила', role:'бровист', rate:'4,9', color:'#C07A2C', does:['brows'] },
+];
+const TIMES = ['10:00','11:00','12:00','13:30','15:00','16:00','17:30','19:00'];
+const fmt = n => n.toLocaleString('ru-RU') + ' ₸';
+const S = { step:0, service:null, master:null, day:null, time:null, name:'', phone:'' };
+
+function days() {
+  const out = [], wd = ['вс','пн','вт','ср','чт','пт','сб'];
+  for (let i = 0; i < 10; i++) { const d = new Date(); d.setDate(d.getDate() + i); out.push({ key:d.toDateString(), wd: i === 0 ? 'сег' : wd[d.getDay()], n:d.getDate(), d }); }
+  return out;
+}
+// занятые слоты — детерминированно от даты и мастера, чтобы выглядело живо
+const busy = (day, m, t) => ((day.n * 7 + m.charCodeAt(0) + t.length * TIMES.indexOf(t)) % 5) === 0;
+
+const $ = s => document.querySelector(s);
+const svc = () => SERVICES.find(x => x.id === S.service);
+const mst = () => MASTERS.find(x => x.id === S.master);
+
+function render() {
+  document.querySelectorAll('.progress i').forEach((el, i) => el.classList.toggle('on', i <= Math.min(S.step, 3)));
+  const el = $('#screen'); let h = '';
+  if (S.step === 0) {
+    h = '<h2>Выберите услугу</h2><div class="list">' + SERVICES.map(s =>
+      `<button class="opt" type="button" data-svc="${s.id}" aria-pressed="${S.service === s.id}"><span><b>${s.name}</b><small>${s.time}</small></span><span class="price">${fmt(s.price)}</span></button>`).join('') + '</div>';
+  } else if (S.step === 1) {
+    h = '<h2>Выберите мастера</h2><div class="list">' + MASTERS.filter(m => m.does.includes(S.service)).map(m =>
+      `<button class="opt" type="button" data-m="${m.id}" aria-pressed="${S.master === m.id}"><span class="master"><span class="face" style="background:${m.color}">${m.name[0]}</span><span><b>${m.name}</b><small>${m.role}</small></span></span><span class="stars">★ ${m.rate}</span></button>`).join('') + '</div>';
+  } else if (S.step === 2) {
+    const ds = days(); if (!S.day) S.day = ds[0].key;
+    const day = ds.find(x => x.key === S.day);
+    h = '<h2>Дата и время</h2><div class="days" role="group" aria-label="Дата">' + ds.map(d =>
+      `<button class="day" type="button" data-day="${d.key}" aria-pressed="${S.day === d.key}"><small>${d.wd}</small><b>${d.n}</b></button>`).join('') + '</div>' +
+      '<div class="slots" role="group" aria-label="Время">' + TIMES.map(t => {
+        const past = day === ds[0] && +t.slice(0,2) <= new Date().getHours();
+        return `<button class="slot" type="button" data-t="${t}" aria-pressed="${S.time === t}" ${past || busy(day, S.master, t) ? 'disabled' : ''}>${t}</button>`; }).join('') + '</div>';
+  } else if (S.step === 3) {
+    const d = days().find(x => x.key === S.day).d;
+    h = `<h2>Проверьте запись</h2><div class="summary">
+      <div><span>Услуга</span><b>${svc().name}</b></div><div><span>Мастер</span><b>${mst().name}</b></div>
+      <div><span>Когда</span><b>${d.toLocaleDateString('ru-RU',{day:'numeric',month:'long'})}, ${S.time}</b></div>
+      <div><span>Стоимость</span><b>${fmt(svc().price)}</b></div></div>
+      <label for="nm">Ваше имя</label><input id="nm" autocomplete="given-name" value="${S.name}" placeholder="Например, Асель">
+      <label for="ph">Телефон</label><input id="ph" type="tel" autocomplete="tel" inputmode="tel" value="${S.phone}" placeholder="+7 7__ ___ __ __">`;
+  } else {
+    const d = days().find(x => x.key === S.day).d;
+    h = `<div class="done"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h2>Вы записаны, ${S.name}</h2><p>${svc().name} у мастера ${mst().name},<br>${d.toLocaleDateString('ru-RU',{day:'numeric',month:'long'})} в ${S.time}</p>
+      <div class="notice"><b>Что происходит дальше</b>Администратор сразу получает запись в Telegram, а она попадает в Google Таблицу. За день до визита бот напомнит вам и предложит перенести запись, если планы изменились.</div></div>`;
+  }
+  el.innerHTML = '<div class="screen">' + h + '</div>';
+  bar();
+}
+
+function ready() {
+  return [S.service, S.master, S.time, S.name.trim().length > 1 && S.phone.replace(/\D/g,'').length >= 10][S.step];
+}
+function bar() {
+  const next = $('#next'), back = $('#back');
+  back.hidden = S.step === 0 || S.step === 4;
+  next.textContent = S.step === 3 ? 'Записаться' : S.step === 4 ? 'Записаться ещё раз' : 'Дальше';
+  next.disabled = S.step < 4 && !ready();
+  if (tg) { $('#bar').hidden = true; const mb = tg.MainButton; mb.setText(next.textContent); next.disabled ? mb.disable() : mb.enable(); mb.show(); S.step > 0 && S.step < 4 ? tg.BackButton.show() : tg.BackButton.hide(); }
+}
+function go(d) {
+  if (S.step === 4) Object.assign(S, { step:0, service:null, master:null, day:null, time:null });
+  else S.step = Math.max(0, S.step + d);
+  if (S.step === 4 && tg) tg.HapticFeedback.notificationOccurred('success');
+  render(); window.scrollTo(0, 0);
+}
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.svc) { S.service = b.dataset.svc; S.master = null; S.time = null; }
+  else if (b.dataset.m) { S.master = b.dataset.m; S.time = null; }
+  else if (b.dataset.day) { S.day = b.dataset.day; S.time = null; }
+  else if (b.dataset.t) S.time = b.dataset.t;
+  else return;
+  if (tg) tg.HapticFeedback.selectionChanged();
+  render();
+});
+document.addEventListener('input', e => { if (e.target.id === 'nm') S.name = e.target.value; if (e.target.id === 'ph') S.phone = e.target.value; bar(); });
+$('#next').onclick = () => go(1);
+$('#back').onclick = () => go(-1);
+if (tg) { tg.MainButton.color = '#B4536A'; tg.MainButton.onClick(() => !$('#next').disabled && go(1)); tg.BackButton.onClick(() => go(-1)); }
+render();
+</script>
+</body>
+</html>

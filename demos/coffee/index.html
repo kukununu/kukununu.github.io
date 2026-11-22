@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дала кофе: кофе-брейки для офисов в Астане</title>
+<meta name="description" content="Демо лендинга с квизом: заявка на кофе-брейк приходит владельцу в Telegram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Onest:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--sage:#E4EBE3;--forest:#1E3328;--moss:#4E6B57;--apricot:#EE9A52;--paper:#F7F9F6;--line:#C8D4C7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--sage);color:var(--forest);font:400 17px/1.6 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid var(--apricot);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.demo{background:var(--forest);color:#CFE0D3;text-align:center;font-size:14px;padding:8px 16px}
+.demo a{color:#fff}
+h1,h2{font-family:"Prata",Georgia,serif;font-weight:400;line-height:1.1}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.brand{font:400 24px "Prata",serif}
+.btn{display:inline-block;background:var(--forest);color:#fff;text-decoration:none;font-weight:700;padding:15px 26px;border-radius:14px;border:0;font:700 16px "Onest";cursor:pointer}
+.btn:hover{background:var(--moss)}
+.btn.light{background:transparent;color:var(--forest);border:2px solid var(--forest)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:40px 0 80px}
+.hero h1{font-size:clamp(38px,5.6vw,68px);margin-bottom:22px}
+.hero p{font-size:19px;color:var(--moss);max-width:46ch;margin-bottom:30px}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap}
+/* cup — the memorable element: a coffee cup drawn as a pie of the day's coffee breaks */
+.cup{position:relative;aspect-ratio:1;max-width:400px;justify-self:center;width:100%}
+.cup svg{width:100%;height:100%}
+.steam path{stroke:var(--moss);stroke-width:3;fill:none;stroke-linecap:round;opacity:.5;animation:steam 3.2s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:.8s}.steam path:nth-child(3){animation-delay:1.6s}
+@keyframes steam{0%{transform:translateY(10px);opacity:0}40%{opacity:.6}100%{transform:translateY(-14px);opacity:0}}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--forest);border-bottom:1px solid var(--line)}
+.facts div{padding:22px 20px 22px 0}
+.facts b{display:block;font:400 30px "Prata",serif}
+.facts span{color:var(--moss);font-size:15px}
+section{padding:88px 0}
+h2{font-size:clamp(30px,4vw,44px);margin-bottom:12px}
+.sub{color:var(--moss);max-width:56ch}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:36px}
+.item{display:grid;grid-template-columns:1fr auto;padding:16px 0;border-bottom:1px solid var(--line)}
+.item b{font-weight:700}
+.item small{grid-column:1/-1;color:var(--moss);font-size:15px}
+.item span{font-weight:700}
+/* quiz */
+.quiz{background:var(--paper);border-radius:28px;padding:40px;display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;margin-top:36px}
+.quiz aside p{color:var(--moss);margin-top:12px}
+.qstep{font-size:14px;color:var(--moss);margin-bottom:8px}
+.q h3{font:400 26px "Prata",serif;margin-bottom:18px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice{text-align:left;padding:16px;border-radius:14px;border:2px solid var(--line);background:#fff;font:500 16px "Onest";color:var(--forest);cursor:pointer}
+.choice small{display:block;color:var(--moss);font-size:14px}
+.choice:hover{border-color:var(--moss)}
+.choice[aria-pressed=true]{border-color:var(--forest);background:var(--sage)}
+.q label{display:block;font-size:14px;color:var(--moss);margin:12px 0 6px}
+.q input{width:100%;padding:14px 16px;border-radius:12px;border:2px solid var(--line);font:inherit;background:#fff}
+.q input:focus{outline:none;border-color:var(--forest)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.qnav .btn:disabled{opacity:.4;cursor:default}
+.linkbtn{background:none;border:0;font:500 16px "Onest";color:var(--moss);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.tgmsg{background:#fff;border-radius:18px;padding:16px 18px;border:1px solid var(--line);font-size:15px;line-height:1.55;max-width:420px;box-shadow:0 18px 40px -24px #1e332866}
+.tgmsg .who{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-weight:700}
+.tgmsg .who i{width:34px;height:34px;border-radius:50%;background:#2AABEE;display:grid;place-items:center;color:#fff;font-style:normal;font-size:15px}
+.ok{font:400 26px "Prata",serif;margin-bottom:8px}
+footer{padding:40px 0;color:var(--moss);font-size:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line)}
+@media (max-width:860px){
+  .hero,.quiz,.menu{grid-template-columns:1fr}
+  .cup{max-width:260px;order:-1}
+  .quiz{padding:24px}
+  .facts{grid-template-columns:1fr}
+  .facts div{padding:14px 0;border-bottom:1px solid var(--line)}
+  section{padding:64px 0}
+}
+@media (max-width:480px){.choices{grid-template-columns:1fr}.btn{width:100%;text-align:center}}
+@media (prefers-reduced-motion:reduce){.steam path{animation:none}}
+</style>
+</head>
+<body>
+<p class="demo">Демо лендинга с квизом, кофейня вымышленная · <a href="../../">портфолио Нурлана</a></p>
+<div class="wrap">
+  <nav><span class="brand">Дала кофе</span><a class="btn light" href="#quiz">Рассчитать кофе-брейк</a></nav>
+  <header class="hero">
+    <div>
+      <h1>Кофе-брейк для офиса за один звонок</h1>
+      <p>Привозим бариста, кофемашину и выпечку на ваши встречи, тренинги и конференции в Астане. Вы занимаетесь гостями, мы всем остальным.</p>
+      <div class="btns"><a class="btn" href="#quiz">Рассчитать за 1 минуту</a><a class="btn light" href="#menu">Меню</a></div>
+    </div>
+    <div class="cup" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <g class="steam"><path d="M80 52c-6-8 6-14 0-22"/><path d="M100 50c-6-8 6-14 0-22"/><path d="M120 52c-6-8 6-14 0-22"/></g>
+        <ellipse cx="100" cy="168" rx="78" ry="12" fill="#C8D4C7"/>
+        <path d="M46 70h108l-10 78a18 18 0 0 1-18 16H74a18 18 0 0 1-18-16z" fill="#1E3328"/>
+        <path d="M154 86h8a18 18 0 0 1 0 36h-12" fill="none" stroke="#1E3328" stroke-width="9"/>
+        <ellipse cx="100" cy="70" rx="54" ry="10" fill="#7A4B2A"/>
+        <path d="M86 68c8-6 20-6 28 0-8 5-20 5-28 0z" fill="#EE9A52"/>
+      </svg>
+    </div>
+  </header>
+  <div class="facts">
+    <div><b>от 20 гостей</b><span>минимальный заказ</span></div>
+    <div><b>за 24 часа</b><span>можно заказать накануне</span></div>
+    <div><b>2 бариста</b><span>на каждые 60 гостей</span></div>
+  </div>
+</div>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>Что привозим</h2>
+    <p class="sub">Цены за порцию. В кофе-брейк входят бариста, посуда, сервировка и уборка.</p>
+    <div class="menu">
+      <div class="item"><b>Капучино и латте</b><span>1 200 ₸</span><small>Молоко обычное, овсяное или безлактозное</small></div>
+      <div class="item"><b>Раф с солёной карамелью</b><span>1 500 ₸</span><small>Самый популярный напиток на конференциях</small></div>
+      <div class="item"><b>Чай с травами и облепихой</b><span>800 ₸</span><small>Для тех, кто не пьёт кофе</small></div>
+      <div class="item"><b>Баурсаки с маслом и мёдом</b><span>600 ₸</span><small>Печём утром в день мероприятия</small></div>
+      <div class="item"><b>Круассаны и сэндвичи</b><span>1 100 ₸</span><small>С курицей, сыром или овощами</small></div>
+      <div class="item"><b>Фруктовая тарелка</b><span>900 ₸</span><small>Сезонные фрукты</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="wrap">
+    <h2>Рассчитайте кофе-брейк</h2>
+    <p class="sub">Четыре вопроса. Менеджер перезвонит с точной сметой в течение 15 минут.</p>
+    <div class="quiz">
+      <aside><p>Так работает квиз на лендинге: человек отвечает на пару вопросов, видит примерную стоимость, а владелец сразу получает готовую заявку в Telegram.</p></aside>
+      <div class="q" id="q" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><footer><span>Дала кофе, Астана (демо)</span><span>Лендинг и квиз: <a href="../../" style="color:inherit">Нурлан Байтлеуов</a></span></footer></div>
+
+<script>
+const Q = [
+  { key:'event', title:'Какое мероприятие?', opts:[['Встреча или планёрка','до 2 часов'],['Тренинг','на весь день'],['Конференция','много гостей'],['Праздник в офисе','с выпечкой']] },
+  { key:'guests', title:'Сколько гостей?', opts:[['20–40',''],['40–80',''],['80–150',''],['Больше 150','']], n:[30,60,115,180] },
+  { key:'menu', title:'Что подать?', opts:[['Только напитки','кофе и чай'],['Напитки и выпечка','самый частый выбор'],['Полный кофе-брейк','напитки, выпечка, сэндвичи, фрукты'],['Пока не знаю','подскажем']], price:[1400,2300,3600,2300] },
+];
+const S = { i:0, a:{}, name:'', phone:'' };
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const estimate = () => { const g = Q[1].n[S.a.guests], p = Q[2].price[S.a.menu]; return Math.round(g * p / 1000) * 1000; };
+const money = n => n.toLocaleString('ru-RU') + ' ₸';
+
+function render() {
+  let h;
+  if (S.i < Q.length) {
+    const q = Q[S.i];
+    h = `<p class="qstep">Вопрос ${S.i + 1} из 4</p><h3>${q.title}</h3><div class="choices">` +
+      q.opts.map((o, k) => `<button type="button" class="choice" data-k="${k}" aria-pressed="${S.a[q.key] === k}">${o[0]}${o[1] ? '<small>' + o[1] + '</small>' : ''}</button>`).join('') + '</div>';
+  } else if (S.i === Q.length) {
+    h = `<p class="qstep">Вопрос 4 из 4</p><h3>Примерно ${money(estimate())}. Куда прислать смету?</h3>
+      <label for="nm">Имя</label><input id="nm" autocomplete="name" value="${esc(S.name)}">
+      <label for="ph">Телефон или WhatsApp</label><input id="ph" type="tel" inputmode="tel" autocomplete="tel" value="${esc(S.phone)}" placeholder="+7 7__ ___ __ __">`;
+  } else {
+    const a = S.a, lbl = k => Q[k].opts[a[Q[k].key]][0];
+    h = `<p class="ok">Заявка отправлена</p><p class="sub" style="margin-bottom:18px">Менеджер перезвонит в течение 15 минут. А вот что в эту секунду получил владелец кофейни:</p>
+      <div class="tgmsg"><div class="who"><i>Д</i>Бот «Дала кофе»</div>
+      🔥 <b>Новая заявка с сайта</b><br>👤 ${esc(S.name)}, ${esc(S.phone)}<br>📋 ${lbl(0)}, ${lbl(1)} гостей<br>☕ ${lbl(2)}<br>💰 Примерно ${money(estimate())}<br>⏱ Перезвонить до ${new Date(Date.now() + 15*60000).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}</div>`;
+  }
+  const canNext = S.i < Q.length ? S.a[Q[S.i].key] !== undefined : S.i === Q.length ? S.name.trim().length > 1 && S.phone.replace(/\D/g,'').length >= 10 : true;
+  h += `<div class="qnav">${S.i > 0 && S.i <= Q.length ? '<button type="button" class="linkbtn" id="back">Назад</button>' : '<span></span>'}
+    <button type="button" class="btn" id="next" ${canNext ? '' : 'disabled'}>${S.i < Q.length ? 'Дальше' : S.i === Q.length ? 'Получить смету' : 'Пройти заново'}</button></div>`;
+  $('#q').innerHTML = h;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b || !b.closest('#q')) return;
+  if (b.dataset.k !== undefined) { S.a[Q[S.i].key] = +b.dataset.k; render(); return; }
+  if (b.id === 'back') S.i--;
+  if (b.id === 'next') { if (S.i > Q.length) { S.i = 0; S.a = {}; } else S.i++; }
+  render();
+});
+document.addEventListener('input', e => {
+  if (e.target.id === 'nm') S.name = e.target.value;
+  if (e.target.id === 'ph') S.phone = e.target.value;
+  const ok = S.name.trim().length > 1 && S.phone.replace(/\D/g,'').length >= 10;
+  $('#next').disabled = !ok;
+});
+render();
+</script>
+</body>
+</html>
