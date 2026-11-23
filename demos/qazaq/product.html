@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ӨРНЕК</title>
+<meta name="description" content="Вещь из коллекции «Дала»: её смысл, узор и как её носить сейчас.">
+<meta name="theme-color" content="#F4EFE7">
+<link rel="icon" href="assets/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Golos+Text:wght@400;500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.pd{display:grid;grid-template-columns:1.1fr 1fr;min-height:100svh}
+.pd .ph{position:sticky;top:0;height:100svh;overflow:hidden;background:#e8e0d4}
+.pd .info{padding:140px var(--pad) 80px;display:flex;flex-direction:column;justify-content:center;max-width:640px}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:28px}
+.crumbs a:hover{color:var(--ink)}
+.pd h1{font-size:clamp(44px,5vw,78px)}
+.say{display:flex;align-items:baseline;gap:14px;margin:22px 0 8px;flex-wrap:wrap}
+.say b{font:italic 500 clamp(40px,4vw,60px)/1 var(--serif);color:var(--clay)}
+.say span{font-size:15px;color:var(--muted)}
+.pd .line{font-size:18px;color:var(--ink-2);margin:18px 0 30px}
+.pd .price{font:500 28px/1 var(--serif);margin-bottom:26px}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.acts .btn{flex:1 1 220px}
+.facts{margin-top:44px;border-top:1px solid var(--line)}
+.facts div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts dt{color:var(--muted)}
+.mean{background:var(--ink);color:var(--bg);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding-block:120px;min-height:100svh}
+.mean .stage{color:var(--gold);max-width:520px;width:100%;justify-self:center}
+.mean .stage .orn{stroke-width:1.3}
+.mean h2 em{color:#E7C47A}
+.mean .story p{font-size:18px;color:#ddd3c7;margin-top:22px;max-width:560px}
+.mean .ok{margin-top:34px;padding-top:24px;border-top:1px solid #ffffff22;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;max-width:560px}
+.mean .ok b{font:500 13px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.mean .ok span{color:#cfc4b8;font-size:15px}
+.wear{padding:120px 0;display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:center;background:var(--paper)}
+.wear p{font:500 clamp(28px,3vw,46px)/1.2 var(--serif)}
+.next{padding:110px 0}
+.next .head{display:flex;justify-content:space-between;align-items:end;margin-bottom:44px;gap:20px}
+.next .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,32px)}
+@media (max-width:900px){
+  .pd,.mean,.wear,.next .grid{grid-template-columns:1fr}
+  .pd .ph{position:relative;height:auto;aspect-ratio:3/4}
+  .pd .info{padding-top:40px}
+  .next .head{flex-direction:column;align-items:start}
+}
+</style>
+</head>
+<body>
+<main id="main"></main>
+<script src="data.js"></script>
+<script src="site.js"></script>
+<script>
+const id = new URLSearchParams(location.search).get('id');
+const it = ITEMS.find(i => i.id === id) || ITEMS[0], o = ORN[it.orn];
+document.title = `${it.name} — ${it.wordRu} — ӨРНЕК`;
+const k = ITEMS.indexOf(it), others = [1, 2, 3].map(d => ITEMS[(k + d) % ITEMS.length]);
+document.getElementById('main').innerHTML = `
+<section class="pd">
+  <div class="ph">${pic(it, '(max-width:900px) 100vw, 55vw', true)}</div>
+  <div class="info">
+    <nav class="crumbs" aria-label="Путь"><a class="u" href="collection.html">Коллекция</a> / ${it.type}</nav>
+    <h1>${it.name}</h1>
+    <div class="say"><b>${it.word}</b><span>в переводе с казахского «${it.wordRu}»</span></div>
+    <p class="line">${it.line}</p>
+    <p class="price" data-assumed>${it.price}</p>
+    <div class="acts"><a class="btn" href="atelier.html?item=${it.id}#book">Записаться на примерку</a><a class="btn ghost" href="#mean">Узнать смысл</a></div>
+    <dl class="facts">${it.facts.map(f => `<div><dt>${f[0]}</dt><dd>${f[1]}</dd></div>`).join('')}</dl>
+  </div>
+</section>
+<section class="mean px io" id="mean">
+  <div class="stage">${svgOrn(it.orn)}</div>
+  <div class="story">
+    <span class="cap" style="color:var(--gold)">Смысл</span>
+    <h2 style="margin-top:16px"><span class="rv"><span>Почему «${it.word}»</span></span><span class="rv"><span>значит <em>${it.wordRu}</em></span></span></h2>
+    ${it.story.map(p => `<p>${p}</p>`).join('')}
+    <div class="ok"><b>Узор</b><span>${o.kz}, ${o.ru.toLowerCase()}: ${o.means.toLowerCase()}. <a class="u" href="ornaments.html#${it.orn}">Подробнее об узоре</a></span></div>
+  </div>
+</section>
+<section class="wear px io">
+  <span class="cap">Как носить сейчас</span>
+  <p>${it.now}</p>
+</section>
+<section class="next px">
+  <div class="head"><h2>Другие <em>смыслы</em></h2><a class="btn ghost" href="collection.html">Вся коллекция</a></div>
+  <div class="grid">${others.map(x => tile(x)).join('')}</div>
+</section>`;
+</script>
+</body>
+</html>
