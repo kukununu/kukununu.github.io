@@ -22,7 +22,7 @@ document.body.insertAdjacentHTML('beforeend', `
     <div><h4>Связь</h4><a href="mailto:hello@ornek.example"><span class="u">hello@ornek.example</span></a></div>
   </div>
   <div class="giant" aria-hidden="true">ӨРНЕК</div>
-  <p class="credits">Демо-сайт. Фото: Aktanbay, Asemaitaizhan, Vyacheslav Kirillin, Ислам Мирсаитов, Екатерина Борисова (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>), Muzaffar Turgunov (CC0), Wikimedia Commons.</p>
+  <p class="credits">Демо-сайт. Фото: <a href="https://unsplash.com/license">Unsplash</a>; Aktanbay, Ислам Мирсаитов (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>), Muzaffar Turgunov (CC0), Wikimedia Commons.</p>
 </div></footer>
 <div class="cursor" id="cursor" aria-hidden="true">Узнать смысл</div>`);
 

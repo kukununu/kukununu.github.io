@@ -6,17 +6,16 @@
 <title>ӨРНЕК — одежда, в которой у каждого узора есть смысл</title>
 <meta name="description" content="Шапаны и камзолы современного кроя с казахскими орнаментами. У каждой вещи свой смысл. Шьём в Астане по меркам.">
 <meta property="og:title" content="ӨРНЕК — у каждой вещи есть смысл">
-<meta property="og:image" content="assets/img/photo-f182537137.webp">
+<meta property="og:image" content="assets/img/u-hands-1600.webp">
 <meta name="theme-color" content="#15110E">
 <link rel="icon" href="assets/icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Golos+Text:wght@400;500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
-.hero{height:100svh;min-height:600px;position:relative;display:grid;grid-template-columns:1fr 1fr;color:var(--bg);overflow:hidden}
+.hero{height:100svh;min-height:600px;position:relative;display:grid;grid-template-columns:1fr;color:var(--bg);overflow:hidden}
 .hero .ph{overflow:hidden}
 .hero .ph img{animation:zoom 3.2s var(--ease) both}
-.hero .ph:nth-child(2) img{animation-delay:.15s}
 @keyframes zoom{from{transform:scale(1.25);filter:brightness(.4)}to{transform:none;filter:none}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 35%,#000a 100%);pointer-events:none}
 .hero .txt{position:absolute;inset:auto 0 0;z-index:2;text-align:center;padding-bottom:clamp(40px,8vh,90px)}
@@ -69,7 +68,7 @@
 .atl dd{font-size:13px;color:var(--muted);grid-row:2}
 
 @media (max-width:900px){
-  .hero{grid-template-columns:1fr}.hero .ph:nth-child(2){display:none}
+  .hero .ph img{object-position:42% 50%}
   .grid3,.lang,.atl{grid-template-columns:1fr}
   .grid3 .tile:nth-child(2){margin-top:0}
   .five .head{flex-direction:column;align-items:start}
@@ -82,8 +81,7 @@
 <body data-over="1">
 <main id="main">
 <section class="hero" data-enter>
-  <div class="ph"><img src="assets/img/photo-f182537137.webp" srcset="assets/img/photo-f182537137-500.webp 500w, assets/img/photo-f182537137-960.webp 960w, assets/img/photo-f182537137.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" width="1280" height="1910" alt="Девушка в бирюзовом шапане и тюбетейке с блюдом баурсаков" fetchpriority="high"></div>
-  <div class="ph"><img src="assets/img/photo-f182536818-960.webp" srcset="assets/img/photo-f182536818-500.webp 500w, assets/img/photo-f182536818-960.webp 960w" sizes="50vw" width="960" height="1433" alt="Девушка в длинном шапане с поясом у решётки юрты" fetchpriority="high"></div>
+  <div class="ph"><img src="assets/img/u-hands-1600.webp" srcset="assets/img/u-hands-960.webp 960w, assets/img/u-hands-1600.webp 1600w, assets/img/u-hands-2400.webp 2400w" sizes="100vw" width="2400" height="1594" alt="Руки в красном бархатном платье с золотым шитьём держат белый цветок" fetchpriority="high"></div>
   <div class="txt px">
     <span class="cap">Коллекция «Дала» · осень 2026</span>
     <h1><span class="rv"><span>У каждой вещи</span></span><span class="rv"><span>есть <em>смысл</em></span></span></h1>
